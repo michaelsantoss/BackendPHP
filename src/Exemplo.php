@@ -6,6 +6,7 @@
  */
     class Conta {
     public $saldo = 0;
+    public $operacao = 0;
     public function getSaldo(){
       echo "Saldo Atual: {$this->saldo}";
     }
@@ -36,6 +37,8 @@
     		echo "Valor maior que o limite permitido<br>";
     	}else{
     		$this->sacar($valor);
+    		$this->operacao+=2.50;
+    		$this->saldo-=2.50;
     	}
 
     }
@@ -47,6 +50,8 @@
     		echo "Valor maior que o limite permitido<br>";
     	}else{
     		$this->sacar($valor);
+    		$this->operacao+=0.80;
+    		$this->saldo-=0.80;
     	}
 
     }

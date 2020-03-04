@@ -35,9 +35,9 @@ Você precisa desenvolver um algoritmo para um caixa eletrônico, seguindo os re
 p - O banco possui dois tipos de conta: Conta Corrente e Conta Poupança;
 p - Cada tipo de conta possui um limite de Saque por acesso: - Conta Corrente: B$ 600,00;
 	- Conta Poupança: B$ 1.000,00;
-D- Cada tipo de conta possui uma taxa de operação que deve ser descontado do saldo sempre que uma operação de Saque for realizada: - Conta Corrente: B$ 2,50;
-	- Conta Poupança: B$ 0,80;
-- As operações que o Caixa Eletrônico disponibiliza são: Depósito, Saque, Transferência;
+D- Cada tipo de conta possui uma taxa de operação que deve ser descontado do saldo sempre que uma operação de Saque for realizada:  -p Conta Corrente: B$ 2,50;
+			-p Conta Poupança: B$ 0,80;
+D- As operações que o Caixa Eletrônico disponibiliza são: Depósito, Saque, Transferência;
 - A operação de Depósito deve receber o valor a ser depositado;
 - A operação de Saque deve receber o valor a ser retirado além de validar se a conta possui saldo e se o valor não excede o limite do acesso;
 - A operação de Transferência remove saldo da conta e adiciona o mesmo valor em uma outra conta;
