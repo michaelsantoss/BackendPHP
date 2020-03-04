@@ -1,21 +1,56 @@
 <?php
-
-namespace Reweb\Job\Backend;
-
 /**
  * Classe de exemplo
  *
- * @author Marcelo Jean <mjean@reweb.com.br>
+ * @author Marcelo Jean <mjean@reweb.com.br> -- editado por Michael Bitencourt
  */
-class Exemplo
-{
-    /**
-     * M�todo de exemplo
-     *
-     * @return string
-     */
-    public function exemplo()
-    {
-        return "Exemplo";
+    class Conta {
+    public $saldo = 0;
+    public function getSaldo(){
+      echo "Saldo Atual: {$this->saldo}";
     }
-}
+  } 
+    
+  trait Acoes {
+    public function depositar($valor){
+      $this->saldo += $valor;
+    }
+    public function sacar($valor){
+      if($this->saldo >= $valor){
+        $this->saldo -= $valor;
+      }
+    }
+  }
+    
+  trait consultaExtrato{
+    public function getSaldo(){
+      echo "Saldo Disponivel para saque:{$this->saldo}<br>";
+    }
+    
+  } 
+    
+  class ContaCorrente extends Conta{
+    use Acoes, consultaExtrato;
+     public function validaSaque($valor){
+    	if($valor>600){
+    		echo "Valor maior que o limite permitido<br>";
+    	}else{
+    		$this->sacar($valor);
+    	}
+
+    }
+  } 
+  class ContaPoupanca extends Conta{
+    use Acoes, consultaExtrato;
+    public function validaSaque($valor){
+    	if($valor>1000){
+    		echo "Valor maior que o limite permitido<br>";
+    	}else{
+    		$this->sacar($valor);
+    	}
+
+    }
+  } 
+
+  ?>
+    
