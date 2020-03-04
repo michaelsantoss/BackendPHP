@@ -6,9 +6,11 @@
  */
     class Conta {
     public $saldo = 0;
-    public $operacao = 0;
-    public function getSaldo(){
-      echo "Saldo Atual: {$this->saldo}";
+    public $operacao = [];
+    public function getDescontos(){
+      foreach ($this->operacao as $key => $value) {
+        //echo $value;
+      }
     }
   } 
     
@@ -21,11 +23,17 @@
         $this->saldo -= $valor;
       }
     }
+    public function transferir($valor,$destino){
+      if($this->saldo >= $valor){
+        $destino->depositar($valor);
+        $this->saldo -= $valor;
+      }
+    }
   }
     
   trait consultaExtrato{
     public function getSaldo(){
-      echo "Saldo Disponivel para saque:{$this->saldo}<br>";
+      echo "Saldo disponivel para saque:B$ {$this->saldo}0<br>";
     }
     
   } 
@@ -37,7 +45,7 @@
     		echo "Valor maior que o limite permitido<br>";
     	}else{
     		$this->sacar($valor);
-    		$this->operacao+=2.50;
+    		array_push($this->operacao, 2.50,'saque');
     		$this->saldo-=2.50;
     	}
 
@@ -50,7 +58,7 @@
     		echo "Valor maior que o limite permitido<br>";
     	}else{
     		$this->sacar($valor);
-    		$this->operacao+=0.80;
+        array_push($this->operacao, 0.80,'sacar');
     		$this->saldo-=0.80;
     	}
 
